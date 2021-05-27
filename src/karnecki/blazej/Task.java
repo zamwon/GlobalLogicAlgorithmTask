@@ -2,12 +2,16 @@ package karnecki.blazej;
 
 import java.util.*;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class Task {
 
     private static void logicOccurrences(String input) {
 
-        Set<Character> charactersSetLOGIC = Set.of('L', 'O', 'G', 'I', 'C');
+        Set<Character> charactersSetLOGIC = Stream.of('L', 'O', 'G', 'I', 'C')
+                .collect(Collectors.toCollection(LinkedHashSet::new));
+//        charactersSetLOGIC.
+//        Set.of('L', 'O', 'G', 'I', 'C');
 
         String inputWithNoSpecialCharsWithSpaces = input.toUpperCase().replaceAll("[^a-zA-Z0-9]", " ");
 
@@ -24,7 +28,7 @@ public class Task {
 
             for (String s : stringList) {
                 Map<Set<String>, Integer> setIntegerMap = new HashMap<>();
-                Set<String> charsInWord = new HashSet<>();
+                Set<String> charsInWord = new LinkedHashSet<>();
                 int logicInKeyCounter = 0;
                 for (Character c : charactersSetLOGIC) {
                     if (s.contains(String.valueOf(c))) {
