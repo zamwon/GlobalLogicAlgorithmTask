@@ -9,31 +9,27 @@ import java.util.stream.Stream;
 
 public class Task {
 
+
+    private static String removeStringSpecialChars(String input){
+        return input.toUpperCase()
+                .replaceAll("[^a-zA-Z0-9]", " ");
+    }
+
+    private static String trimStringSpecialChars(String input){
+        return input.replaceAll("[^a-zA-Z0-9]", "");
+
+    }
     private static void logicOccurrences(String input) {
 
         Set<Character> charactersSetLOGIC = Stream.of('L', 'O', 'G', 'I', 'C')
                 .collect(Collectors.toCollection(LinkedHashSet::new));
-//        charactersSetLOGIC.
-//        Set.of('L', 'O', 'G', 'I', 'C');
 
-        String inputWithNoSpecialCharsWithSpaces = input.toUpperCase()
-                .replaceAll("[^a-zA-Z0-9]", " ");
+        int frazeLength = trimStringSpecialChars(input).length();
 
-        int inputLength = input.length();
-
-        String inputWithNoSpecialCharsAndNoSpaces = input.replaceAll("[^a-zA-Z0-9]", "");
-        int frazeLength = inputWithNoSpecialCharsAndNoSpaces.length();
-  //      System.out.println(frazeLength);
-
-        // Check list of split input
-//      Arrays.stream(inputWithNoSpecialCharsWithSpaces.split(" ")).collect(Collectors.toList()).forEach(s -> System.out.println(s));
         List<String> stringList = Arrays.stream
-                (inputWithNoSpecialCharsWithSpaces.split(" "))
+                (removeStringSpecialChars(input).split(" "))
                 .collect(Collectors.toList());
 
-//        Map<Map<Set<String>, Integer>, Integer> resultDict = new HashMap<>();
-
-//        Map<String, Integer> setIntegerMap = new HashMap<>();
         Map<String,Integer> setIntegerMap = new TreeMap<>(
                 Comparator.comparingInt(String::length)
                         .thenComparing(Function.identity()));
@@ -59,11 +55,7 @@ public class Task {
                 setIntegerMap.put(charsInWord + " " + s.length(), setIntegerMap.get(
                         charsInWord + " " + s.length()) + count);
             }
-//            resultDict.put(setIntegerMap, count);
-//            System.out.println(charsInWord + ", " + setIntegerMap.get(charsInWord) + " wystapienia= " + count + "/" + totalOccur);
         }
-//        resultDict.forEach((k,v) -> System.out.println(k + ", " + v));
-//        setIntegerMap.forEach((k, v) -> System.out.println(k + ", " + v));
 
         int finalTotalOccur = totalOccur;
         setIntegerMap.forEach
