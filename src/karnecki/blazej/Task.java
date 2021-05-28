@@ -1,5 +1,7 @@
 package karnecki.blazej;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -24,9 +26,9 @@ public class Task {
 //      Arrays.stream(inputWithNoSpecialCharsWithSpaces.split(" ")).collect(Collectors.toList()).forEach(s -> System.out.println(s));
         List<String> stringList = Arrays.stream(inputWithNoSpecialCharsWithSpaces.split(" ")).collect(Collectors.toList());
 
-        Map<Map<Set<String>, Integer>, Integer> resultDict = new HashMap<>();
+//        Map<Map<Set<String>, Integer>, Integer> resultDict = new HashMap<>();
 
-        Map<Set<String>, Integer> setIntegerMap = new HashMap<>();
+        Map<String, Integer> setIntegerMap = new HashMap<>();
         int totalOccur = 0;
         for (String s : stringList) {
             Set<String> charsInWord = new LinkedHashSet<>();
@@ -42,8 +44,10 @@ public class Task {
                     }
                 }
             }
-            setIntegerMap.put(charsInWord, s.length());
-            resultDict.put(setIntegerMap, count);
+
+            setIntegerMap.put(charsInWord + " " + s.length(), count);
+            int finalCount = count;
+//            resultDict.put(setIntegerMap, count);
 
 
 //            System.out.println(charsInWord + ", " + setIntegerMap.get(charsInWord) + " wystapienia= " + count + "/" + totalOccur);
@@ -51,15 +55,21 @@ public class Task {
 
         }
 
+//        resultDict.forEach((k,v) -> System.out.println(k + ", " + v));
+//        setIntegerMap.forEach((k, v) -> System.out.println(k + ", " + v));
+
         int finalTotalOccur = totalOccur;
-        setIntegerMap.forEach((k, v) -> System.out.println("{" + k + ", " + v + "} ile x " + resultDict.get(setIntegerMap) + " z " + finalTotalOccur));
+        setIntegerMap.forEach
+                ((k, v) -> System.out.println(
+                        "{" + k  + "} = " + BigDecimal.valueOf(v.doubleValue()/finalTotalOccur).setScale(2, RoundingMode.HALF_UP)
+                                + " " + v + "/" + finalTotalOccur + ")"));
 
 
     }
 
     public static void main(String[] args) {
 
-        logicOccurrences("I love to work in global logic plate level!");
+        logicOccurrences("I love to work in global logic level plate!");
     }
 
 }
