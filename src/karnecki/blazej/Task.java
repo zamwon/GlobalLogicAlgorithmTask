@@ -45,16 +45,14 @@ public class Task {
                 }
             }
 
-            setIntegerMap.put(charsInWord + " " + s.length(), count);
-            int finalCount = count;
+            if(!setIntegerMap.containsKey(charsInWord + " " + s.length())) {
+                setIntegerMap.put(charsInWord + " " + s.length(), count);
+            } else {
+                setIntegerMap.put(charsInWord + " " + s.length(), setIntegerMap.get(charsInWord + " " + s.length()) + count);
+            }
 //            resultDict.put(setIntegerMap, count);
-
-
 //            System.out.println(charsInWord + ", " + setIntegerMap.get(charsInWord) + " wystapienia= " + count + "/" + totalOccur);
-
-
         }
-
 //        resultDict.forEach((k,v) -> System.out.println(k + ", " + v));
 //        setIntegerMap.forEach((k, v) -> System.out.println(k + ", " + v));
 
@@ -69,7 +67,7 @@ public class Task {
 
     public static void main(String[] args) {
 
-        logicOccurrences("I love to work in global logic level plate!");
+        logicOccurrences("I love to work in global logic!");
     }
 
 }
