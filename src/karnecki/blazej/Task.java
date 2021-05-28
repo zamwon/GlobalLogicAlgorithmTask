@@ -26,19 +26,33 @@ public class Task {
 
         Map<Map<Set<String>, Integer>, Integer> resultDict = new HashMap<>();
 
-            for (String s : stringList) {
-                Map<Set<String>, Integer> setIntegerMap = new HashMap<>();
-                Set<String> charsInWord = new LinkedHashSet<>();
-                int logicInKeyCounter = 0;
-                for (Character c : charactersSetLOGIC) {
-                    if (s.contains(String.valueOf(c))) {
-                        charsInWord.add(String.valueOf(c));
-                        logicInKeyCounter++;
+        Map<Set<String>, Integer> setIntegerMap = new HashMap<>();
+        int totalOccur = 0;
+        for (String s : stringList) {
+            Set<String> charsInWord = new LinkedHashSet<>();
+            int count = 0;
+            for (Character c : charactersSetLOGIC) {
+                if (s.contains(String.valueOf(c))) {
+                    charsInWord.add(String.valueOf(c));
+                    for (int i = 0; i < s.length(); i++) {
+                        if (s.charAt(i) == c) {
+                            count++;
+                            totalOccur++;
+                        }
                     }
                 }
-                setIntegerMap.put(charsInWord, s.length());
-                System.out.println(charsInWord + ", " + setIntegerMap.get(charsInWord) + " logicC= " + logicInKeyCounter);
             }
+            setIntegerMap.put(charsInWord, s.length());
+            resultDict.put(setIntegerMap, count);
+
+
+//            System.out.println(charsInWord + ", " + setIntegerMap.get(charsInWord) + " wystapienia= " + count + "/" + totalOccur);
+
+
+        }
+
+        int finalTotalOccur = totalOccur;
+        setIntegerMap.forEach((k, v) -> System.out.println("{" + k + ", " + v + "} ile x " + resultDict.get(setIntegerMap) + " z " + finalTotalOccur));
 
 
     }
