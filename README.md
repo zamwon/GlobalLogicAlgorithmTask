@@ -11,7 +11,8 @@ need to group them by combination of LOGIC characters and size of the word. We a
 31 chars in total, however 7 of them are special chars so in order to compute the second requirement we take into
 account only 24;
 In this case, your algorithm would print:
- {(i), 1} = 0.07 (1/15)
+
+{(i), 1} = 0.07 (1/15)
 
 {(i), 2} = 0.07 (1/15)
 
