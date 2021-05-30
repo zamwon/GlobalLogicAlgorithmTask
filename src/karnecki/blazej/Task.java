@@ -5,7 +5,7 @@ import java.math.RoundingMode;
 import java.util.*;
 import java.util.function.Function;
 import java.util.stream.Collectors;
-
+//import com.google.common.primatives.Chars;
 public class Task {
 
 
@@ -32,14 +32,14 @@ public class Task {
                         .thenComparing(Function.identity()));
         int totalOccur = 0;
 
-        charactersLookedFor.forEach(Character::toUpperCase);
+//        charactersLookedFor.forEach(Character::toUpperCase);
 
         for (String s : stringList) {
             Set<String> charsInWord = new LinkedHashSet<>();
             int count = 0;
-            for (Character c : charactersLookedFor) {
+            for (char c : charactersLookedFor) {
                 char cToUpperCase = Character.toUpperCase(c);
-                if (s.contains(String.valueOf(cToUpperCase))) {
+                if (s.contains(String.valueOf(c))) {
                     charsInWord.add(String.valueOf(cToUpperCase));
                     for (int i = 0; i < s.length(); i++) {
                         if (s.charAt(i) == cToUpperCase) {
@@ -75,9 +75,22 @@ public class Task {
 
 
     public static void main(String[] args) {
-        logicOccurrences("I love to work in global logic!", new LinkedHashSet<>(Arrays.asList('L', 'o', 'g', 'I', 'C')));
+        Menu menu = new Menu();
+
+        menu.chooseAction();
+
+
+//        logicOccurrences("I love to work in global logic!", new LinkedHashSet<>(Arrays.asList('L', 'o', 'g', 'I', 'C')));
 //        System.out.println("#################");
-//        logicOccurrences("I love to code all day all night!", new LinkedHashSet<>(Arrays.asList('L', 'O', 'V', 'E')));
+        List<Character> chars = menu.getChars()
+                .chars()
+                .mapToObj(e -> (char) e)
+                .collect(Collectors.toList());
+        LinkedHashSet<Character> set = new LinkedHashSet<>();
+
+            set.addAll(chars);
+
+        logicOccurrences(menu.getInputString(), new LinkedHashSet<>(chars));
 
     }
 
