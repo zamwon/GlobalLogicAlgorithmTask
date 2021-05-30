@@ -32,7 +32,6 @@ public class Task {
                         .thenComparing(Function.identity()));
         int totalOccur = 0;
 
-//        charactersLookedFor.forEach(Character::toUpperCase);
 
         for (String s : stringList) {
             Set<String> charsInWord = new LinkedHashSet<>();
@@ -79,8 +78,6 @@ public class Task {
 
         menu.chooseAction();
 
-//        logicOccurrences("I love to work in global logic!", new LinkedHashSet<>(Arrays.asList('L', 'o', 'g', 'I', 'C')));
-//        System.out.println("#################");
             List<Character> chars = menu.getChars()
                     .chars()
                     .mapToObj(e -> (char) e)

@@ -10,21 +10,11 @@ public class Menu {
     String inputString;
     String chars;
 
-
     public String getInputString() {
         return inputString;
     }
-
-    public void setInputString(String inputString) {
-        this.inputString = inputString;
-    }
-
     public String getChars() {
         return chars;
-    }
-
-    public void setChars(String chars) {
-        this.chars = chars;
     }
 
     private enum ActionType {
@@ -38,7 +28,7 @@ public class Menu {
         }
     }
 
-    public String chooseAction() throws FileNotFoundException {
+    public void chooseAction(){
         System.out.println("Choose data loading method -> \"type\" - for cmd input, \"file\" - for loading data from file: ");
 
         Scanner scanner = new Scanner(System.in);
@@ -60,17 +50,27 @@ public class Menu {
             default:
                 throw new IllegalStateException("Unexpected value: " + action);
         }
-        return action.toString();
     }
 
-    //todo
-    private List<String> loadFromFile() throws FileNotFoundException {
+    private List<String> loadFromFile() {
         File file = new File("src/karnecki/blazej/TextFromFile");
 
 
-        Scanner scan = new Scanner(file);
-        String fileString = scan.nextLine();
-        String fileChars = scan.nextLine();
+        Scanner scan = null;
+        String fileString = null;
+        String fileChars = null;
+        try {
+            scan = new Scanner(file);
+            fileString = scan.nextLine();
+            fileChars = scan.nextLine();
+        } catch (FileNotFoundException e) {
+            e.getMessage();
+        } finally {
+            if (scan != null) {
+                scan.close();
+            }
+        }
+
         return List.of(fileString, fileChars);
     }
 
