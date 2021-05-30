@@ -31,14 +31,18 @@ public class Task {
                 Comparator.comparingInt(String::length)
                         .thenComparing(Function.identity()));
         int totalOccur = 0;
+
+        charactersLookedFor.forEach(Character::toUpperCase);
+
         for (String s : stringList) {
             Set<String> charsInWord = new LinkedHashSet<>();
             int count = 0;
             for (Character c : charactersLookedFor) {
-                if (s.contains(String.valueOf(c))) {
-                    charsInWord.add(String.valueOf(c));
+                char cToUpperCase = Character.toUpperCase(c);
+                if (s.contains(String.valueOf(cToUpperCase))) {
+                    charsInWord.add(String.valueOf(cToUpperCase));
                     for (int i = 0; i < s.length(); i++) {
-                        if (s.charAt(i) == c) {
+                        if (s.charAt(i) == cToUpperCase) {
                             count++;
                             totalOccur++;
                         }
@@ -71,9 +75,9 @@ public class Task {
 
 
     public static void main(String[] args) {
-        logicOccurrences("I love to work in global logic!", new LinkedHashSet<>(Arrays.asList('L', 'O', 'G', 'I', 'C')));
-        System.out.println("#################");
-        logicOccurrences("I love to code all day all night!", new LinkedHashSet<>(Arrays.asList('L', 'O', 'V', 'E')));
+        logicOccurrences("I love to work in global logic!", new LinkedHashSet<>(Arrays.asList('L', 'o', 'g', 'I', 'C')));
+//        System.out.println("#################");
+//        logicOccurrences("I love to code all day all night!", new LinkedHashSet<>(Arrays.asList('L', 'O', 'V', 'E')));
 
     }
 
