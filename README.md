@@ -65,3 +65,4 @@ Application provide two method of data delivery. User can :
 
 ## Contact
 Created by Błażej Karnecki
+blazej.karnecki@gmail.com
