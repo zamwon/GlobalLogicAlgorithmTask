@@ -11,15 +11,15 @@ need to group them by combination of LOGIC characters and size of the word. We a
 31 chars in total, however 7 of them are special chars so in order to compute the second requirement we take into
 account only 24;
 In this case, your algorithm would print:
-{(i), 1} = 0.07 (1/15)
-{(i), 2} = 0.07 (1/15)
-{(o), 2} = 0.07 (1/15)
-{(o), 4} = 0.07 (1/15)
-{(l, o), 4} = 0.13 (2/15)
-{(l, o, g), 6} = 0.27 (4/15)
-{(l, o, g, i, c), 5} = 0.33 (5/15)
-TOTAL Frequency: 0.63 (15/24)
-(This is just a basic example of output)
+-{(i), 1} = 0.07 (1/15)
+-{(i), 2} = 0.07 (1/15)
+-{(o), 2} = 0.07 (1/15)
+-{(o), 4} = 0.07 (1/15)
+-{(l, o), 4} = 0.13 (2/15)
+-{(l, o, g), 6} = 0.27 (4/15)
+-{(l, o, g, i, c), 5} = 0.33 (5/15)
+-TOTAL Frequency: 0.63 (15/24)
+-(This is just a basic example of output)
 
 Assumptions:
 ● The list of special chars are: ( !"#$%&'()*+,-./:;<=>?@[\]^_`{|}~); (Yes it includes the blank
