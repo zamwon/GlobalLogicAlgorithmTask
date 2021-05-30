@@ -46,7 +46,12 @@ Intern task for Global Logic.
 - JAVA
 
 ## Setup
-Application provide two method of data delivery. User can type in String input and charactersLookedFor from commandLine or load this data from file.
+Application provide two method of data delivery. User can :
+"Choose data loading method -> "type" - for cmd input, "file" - for loading data from file: "
+
+- type in String input and charactersLookedFor from commandLine,
+"type" -> Provide string: "string" -> Provide character you want look for (as string): "charactersLokedFor";
+- load this data from file.
 
 
 ## Contact
