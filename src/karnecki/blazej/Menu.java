@@ -73,7 +73,7 @@ public class Menu {
     private String charactersFromInput() {
         System.out.println("Provide character you want look for:");
         Scanner charactersScanner = new Scanner(System.in);
-        return charactersScanner.nextLine();
+        return charactersScanner.nextLine().toUpperCase();
     }
 
 }

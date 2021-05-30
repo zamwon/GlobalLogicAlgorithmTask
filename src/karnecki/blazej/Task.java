@@ -79,16 +79,12 @@ public class Task {
 
         menu.chooseAction();
 
-
 //        logicOccurrences("I love to work in global logic!", new LinkedHashSet<>(Arrays.asList('L', 'o', 'g', 'I', 'C')));
 //        System.out.println("#################");
         List<Character> chars = menu.getChars()
                 .chars()
                 .mapToObj(e -> (char) e)
                 .collect(Collectors.toList());
-        LinkedHashSet<Character> set = new LinkedHashSet<>();
-
-            set.addAll(chars);
 
         logicOccurrences(menu.getInputString(), new LinkedHashSet<>(chars));
 
