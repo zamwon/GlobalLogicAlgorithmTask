@@ -1,11 +1,11 @@
 package karnecki.blazej;
 
+import java.io.FileNotFoundException;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.*;
 import java.util.function.Function;
 import java.util.stream.Collectors;
-//import com.google.common.primatives.Chars;
 public class Task {
 
 
@@ -74,20 +74,19 @@ public class Task {
     }
 
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws FileNotFoundException {
         Menu menu = new Menu();
 
         menu.chooseAction();
 
 //        logicOccurrences("I love to work in global logic!", new LinkedHashSet<>(Arrays.asList('L', 'o', 'g', 'I', 'C')));
 //        System.out.println("#################");
-        List<Character> chars = menu.getChars()
-                .chars()
-                .mapToObj(e -> (char) e)
-                .collect(Collectors.toList());
+            List<Character> chars = menu.getChars()
+                    .chars()
+                    .mapToObj(e -> (char) e)
+                    .collect(Collectors.toList());
 
-        logicOccurrences(menu.getInputString(), new LinkedHashSet<>(chars));
+            logicOccurrences(menu.getInputString(), new LinkedHashSet<>(chars));
 
     }
-
 }

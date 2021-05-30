@@ -1,4 +1,8 @@
 package karnecki.blazej;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.List;
 import java.util.Scanner;
 
 public class Menu {
@@ -34,7 +38,7 @@ public class Menu {
         }
     }
 
-    public void chooseAction() {
+    public String chooseAction() throws FileNotFoundException {
         System.out.println("Choose data loading method -> \"type\" - for cmd input, \"file\" - for loading data from file: ");
 
         Scanner scanner = new Scanner(System.in);
@@ -47,20 +51,28 @@ public class Menu {
                 chars = charactersFromInput();
                 break;
             case FILE:
-                loadFromFile();
+                inputString = loadFromFile().get(0).toUpperCase();
+                chars = loadFromFile().get(1).toUpperCase();
                 break;
             case EXIT:
+                System.exit(1);
                 break;
             default:
                 throw new IllegalStateException("Unexpected value: " + action);
         }
+        return action.toString();
     }
 
     //todo
-    private String loadFromFile() {
-        return "file";
-    }
+    private List<String> loadFromFile() throws FileNotFoundException {
+        File file = new File("src/karnecki/blazej/TextFromFile");
 
+
+        Scanner scan = new Scanner(file);
+        String fileString = scan.nextLine();
+        String fileChars = scan.nextLine();
+        return List.of(fileString, fileChars);
+    }
 
 
     private String strFromInput() {
