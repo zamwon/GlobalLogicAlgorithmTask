@@ -60,7 +60,7 @@ Application provide two method of data delivery. User can :
 
 - type in String input and charactersLookedFor from commandLine,
 "type" -> Provide string: "string" -> Provide character you want look for (as string): "charactersLokedFor";
-- load this data from file.
+- load this data from file -> "file"
 
 
 ## Contact
